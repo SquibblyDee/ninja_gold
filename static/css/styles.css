@@ -63,15 +63,6 @@
 
 .output{
     margin: 1% 0% 0% 1%;
-    {% for i in range(len(session['activity']))}
-        {% if "Ouch" not in session['activity'][i] %}
-            color: green;
-        {% endif %}
-        {% if "Ouch" in session['activity'][i] %}
-            color: red;
-        {% endif %}
-    {% endfor %}
-
 }
 
 

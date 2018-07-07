@@ -52,9 +52,9 @@
             <div class='output'>
                 <p>Activities:</p>
                 {% if session['goldEarned'] > 0: %}
-                <textarea style=color:green; class="form-control" rows="4"> {{session['activity']}} </textarea>
+                <textarea style=color:green; id='text_output' class="form-control" rows="4"> {{session['activity']}} </textarea>
                 {% elif session['goldEarned'] < 0 %}
-                <textarea style=color:red; class="form-control" rows="4"> {{session['activity']}} </textarea>
+                <textarea style=color:red; id='text_output' class="form-control" rows="4"> {{session['activity']}} </textarea>
                 {% endif %}
             </div>
         </div>

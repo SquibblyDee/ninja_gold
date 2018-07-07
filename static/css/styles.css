@@ -69,3 +69,9 @@
 textarea{
     width: 98%;
 }
+
+.output p{
+    {% if "Earned" in {{session.activity}}:%}
+    color: green;
+    {% endif %}
+}

@@ -2,6 +2,8 @@ from flask import Flask, render_template, redirect, session, request
 app = Flask(__name__)
 app.secret_key='these_exercises_are_slowly_killing_me'
 import random
+import time
+import datetime
 
 @app.route('/')
 def index():
@@ -30,9 +32,9 @@ def process_money():
     print("GOLD EARNED", goldEarned)
     session['gold']+= goldEarned
     if goldEarned > 0:
-        session['activity']+="Earned "+str(goldEarned)+" gold from the "+session['building']+"! \n"
+        session['activity']+="Earned "+str(goldEarned)+" gold from the "+session['building']+"!  ("+str(datetime.datetime.now().strftime("%y/%m/%d %H:%M"))+")\n"
     else:
-        session['activity']+="Entered a "+session['building']+" and lost "+str(goldEarned)+" gold... Ouch... \n"
+        session['activity']+="Entered a "+session['building']+" and lost "+str(goldEarned)+" gold... Ouch...  ("+str(datetime.datetime.now().strftime("%y/%m/%d %H:%M"))+")\n"
     return redirect('/')
 
 if __name__ == '__main__':

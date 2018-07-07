@@ -7,7 +7,7 @@
         <!-- Linking Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <!-- linking a javascript file -->
-        <script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
     </head>
     <body>
         <div class='container'>
@@ -52,10 +52,15 @@
             </div>
             <div class='output'>
                 <p>Activities:</p>
-                    <textarea id="text_output" class="form-control" rows="4">{{session['activity']}} </textarea>
+                    {% if session['goldEarned'] > 0: %}
+                    <textarea style=color:green; class="form-control" rows="4"> {{session['activity']}} </textarea>
+                    {% elif session['goldEarned'] < 0 %}
+                    <textarea style=color:red; class="form-control" rows="4"> {{session['activity']}} </textarea>
+                    {% endif %}
             </div>
         </div>
         <script>
+            // Calling script to force textarea to bottom always
             forceTextToBottom()
         </script>
     </body>

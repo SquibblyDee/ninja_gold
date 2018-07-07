@@ -52,7 +52,11 @@
             </div>
             <div class='output'>
                 <p>Activities:</p>
-                <textarea class="form-control" rows="3">{{session['activity']}}</textarea>
+                <textarea class="form-control" rows="6">
+                    {% for i in session['activity']: %}
+                    {{ session['activity'][0] }}
+                    {% endfor %}
+                </textarea>
             </div>
         </div>
         

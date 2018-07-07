@@ -5,6 +5,10 @@ import random
 
 @app.route('/')
 def index():
+    if 'gold' not in session:
+        session['gold'] = 0
+        session['building'] = ""
+        session['activity'] = ""
     return render_template('ninja_gold.html')
 
 @app.route('/destroy_session')
@@ -14,10 +18,6 @@ def destroy():
 
 @app.route('/process_money', methods=['POST'])
 def process_money():
-    if 'gold' not in session:
-        session['gold'] = 0
-        session['building'] = ""
-        session['activity'] = ""
     session['building'] = request.form['building']
     if session['building'] == 'farm':
         goldEarned = random.randint(10,20)

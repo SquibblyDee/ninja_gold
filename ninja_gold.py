@@ -14,10 +14,11 @@ def index():
         session['goldEarned'] = 0
     return render_template('ninja_gold.html')
 
-@app.route('/destroy_session')
-def destroy():
-    session.clear()
-    return redirect('/')
+# Easy way to reset our session data for testing
+# @app.route('/destroy_session')
+# def destroy():
+    # session.clear()
+    # return redirect('/')
 
 @app.route('/process_money', methods=['POST'])
 def process_money():

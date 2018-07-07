@@ -11,7 +11,6 @@
     </head>
     <body>
         <div class='container'>
-                
             <div class='gold'>
                 <p>Your Gold:</p>
                 <p> {{ session['gold'] }}</p>
@@ -52,11 +51,11 @@
             </div>
             <div class='output'>
                 <p>Activities:</p>
-                    {% if session['goldEarned'] > 0: %}
-                    <textarea style=color:green; class="form-control" rows="4"> {{session['activity']}} </textarea>
-                    {% elif session['goldEarned'] < 0 %}
-                    <textarea style=color:red; class="form-control" rows="4"> {{session['activity']}} </textarea>
-                    {% endif %}
+                {% if session['goldEarned'] > 0: %}
+                <textarea style=color:green; class="form-control" rows="4"> {{session['activity']}} </textarea>
+                {% elif session['goldEarned'] < 0 %}
+                <textarea style=color:red; class="form-control" rows="4"> {{session['activity']}} </textarea>
+                {% endif %}
             </div>
         </div>
         <script>

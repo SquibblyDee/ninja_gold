@@ -9,7 +9,7 @@ import datetime
 def index():
     if 'gold' not in session:
         session['gold'] = 0
-        session['building'] = ""
+        session['building'] = "initial"
         session['activity'] = ""
         session['goldEarned'] = 0
     return render_template('ninja_gold.html')
@@ -20,6 +20,7 @@ def index():
     # session.clear()
     # return redirect('/')
 
+# This generates our RNG for each activity and returns a string based on whether we gained or lost gold
 @app.route('/process_money', methods=['POST'])
 def process_money():
     session['building'] = request.form['building']
@@ -31,7 +32,6 @@ def process_money():
         session['goldEarned'] = random.randint(2,5)
     else:
         session['goldEarned'] = random.randint(-50,50)
-    print("GOLD EARNED", session['goldEarned'])
     session['gold']+= session['goldEarned']
     if session['goldEarned'] > 0:
         session['activity']+="Earned "+str(session['goldEarned'])+" gold from the "+session['building']+"!  ("+str(datetime.datetime.now().strftime("%y/%m/%d %H:%M"))+")\n"
